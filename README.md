@@ -11,7 +11,7 @@ https://www.modelscope.cn/datasets/OmniData/LCCC
 基于LCCC 测试集筛选出1000条input,保存到data/clean_input.txt
 
 数据生成
-data/clean_input.txt -> data\style_chat_data.json
+data/clean_input.txt -> data/style_chat_data.json
 
 数据转换（使用xtuner框架训练）
 data/train_data.json
@@ -25,7 +25,9 @@ FewCLUE_ocnli_fc_gen（自然语言推理）对预期模型进行评估。
 利用opencompass框架，对比qwen1.5 1.8B模型和0.5B模型，选择1.8B模型
 
 # 模型训练与评测
+batch_size设置为12（观察显存设置）
+训练命令
+nohup bash -c 'xtuner train /home/bygpu/projects/emotion_model/qwen1_5_1_8b_chat_qlora_alpaca_e3_emotion.py' > /home/bygpu/projects/emotion_model/train_0302.log 2>&1 &
 
 # 模型部署
 
-nohup bash -c 'xtuner train /home/bygpu/projects/emotion_model/qwen1_5_1_8b_chat_qlora_alpaca_e3.py' > /home/bygpu/projects/emotion_model/train.log 2>&1 &
