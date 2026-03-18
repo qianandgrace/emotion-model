@@ -2,10 +2,10 @@ import streamlit as st
 from openai import OpenAI
 
 # 初始化客户端
-client = OpenAI(base_url="http://localhost:23333/v1/", api_key="suibianxie")
+client = OpenAI(base_url="http://ai.bygpu.com:58111/v1/", api_key="suibianxie")
 
 # 设置页面标题
-st.title("项目一效果演示")
+st.title("情绪对话机器人")
 
 # 初始化session状态（仅用于显示历史）
 if "messages" not in st.session_state:
@@ -32,7 +32,7 @@ if prompt := st.chat_input("请输入您的问题，或输入exit退出"):
         # 发起API请求（每次只发送当前消息）
         response = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],  # 每次只发送当前问题
-            model="/home/cw/llms/Qwen/Qwen1.5-1.8B-Chat-merged"
+            model="/home/bygpu/models/Qwen/Qwen1___5-1___8B-Chat-emotion"
         )
         
         # 获取模型回复
