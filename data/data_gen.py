@@ -47,6 +47,8 @@ style_config = {
 #========================
 #生成函数（修正消息的结构）
 #========================
+import re
+import json
 
 def generate_style_data(style_name, num_samples=50):
     config = style_config[style_name]

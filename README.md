@@ -23,11 +23,22 @@ data/train_data.json
 依赖于基准模型的中文理解能力，当前任务大多是短语对话，可以选择 FewCLUE_bustm_gen（短文本分类）、
 FewCLUE_ocnli_fc_gen（自然语言推理）对预期模型进行评估。
 利用opencompass框架，对比qwen1.5 1.8B模型和0.5B模型，选择1.8B模型
+python run.py --models hf_qwen1_5_0_5b_chat hf_qwen1_5_1_8b_chat --datasets FewCLUE_bustm_gen FewCLUE_ocnli_fc_gen --debug
+结果如下：
+
 
 # 模型训练与评测
 batch_size设置为12（观察显存设置）
 训练命令
 nohup bash -c 'xtuner train /home/bygpu/projects/emotion_model/qwen1_5_1_8b_chat_qlora_alpaca_e3_emotion.py' > /home/bygpu/projects/emotion_model/train_0302.log 2>&1 &
+loss 0.00几
+xtuner 训练，xtuner可以支持隔几个epoch显示预设数据的效果展示，适合主观评价，决定什么时候停止训练
 
 # 模型部署
+## xtuner 模型导出
+1. 转化pth为hf
+2. 
+## llmdeploy 部署微调好的模型
+模板保证一致
 
+## streamlit 实现界面互动
